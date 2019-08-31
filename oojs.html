@@ -1,0 +1,315 @@
+<!-- <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Object-oriented JavaScript example</title>
+  </head>
+
+  <body>
+    <p>This example requires you to enter commands in your browser's JavaScript console (see <a href="https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools">What are browser developer tools</a> for more information).</p>
+
+  </body>
+
+    <script>
+    //   //how to define a person(object) with a normal fn
+    //  function createNewPerson(name) {
+    //    const obj = {};
+    //    obj.name = name;
+    //    obj.greeting = function() {
+    //      alert('Hi! I\'m ' + obj.name + '.');
+    //    };
+    //    return obj;
+    //  }
+
+     //create a new person instance
+     //type the blw code in ur browser console
+    //  const salva = createNewPerson('Salva');
+    //  salva;
+    //  salva.name;
+    //  salva.greeting();
+
+
+
+    //  //how to defn a person with constructor fn
+    //  //the constr fn is js version of a class
+    //  //note: a contr fn name usually starts with capital letter to make it easier to recognize
+    //  function Person(name) {
+    //    this.name = name;
+    //    this.greeting = function() {
+    //      alert('Hi! I\'m ' + this.name + '.')
+    //    };
+    //  }
+
+    //  //create new obj instances using the 'new' keyword (constructor call)
+    //  const person1 = new Person('Chimez');
+    //  const person2 = new Person('Stone');
+
+     //a more complex constructor looks like thsi
+      // function Person(first, last, age, gender, interests) {
+      //   this.name = {
+      //     first : first,
+      //     last : last
+      //   };
+      //   this.age = age;
+      //   this.gender = gender;
+      //   this.interests = interests;
+      //   this.bio = function() {
+      //     let string = this.name.first + ' ' + this.name.last + ' is ' + this.age + ' years old. ';
+      //     let pronoun;
+      //     if (this.gender === "Male" || this.gender === "male" || this.gender === "M" || this.gender === "m") {
+      //       pronoun = 'He likes '
+      //     } else if (this.gender === "Female" || this.gender === "female" || this.gender === "F" || this.gender === "f") {
+      //       pronoun = 'She likes '
+      //     } else {
+      //       pronoun = 'He/She likes '
+      //     }
+      //     string += pronoun;
+
+      //     if (this.interests.length === 1) {
+      //       string += this.interests[0] + '.';
+      //     } else if (this.interests.length ===2) {
+      //       string += this.interests[0] + ' and ' + this.interests[1] + '.';
+      //     } else {
+      //       for(var i = 0; i < this.interests.length; i++) {
+      //         if(i === this.interests.length - 1) {
+      //           string += ' and ' + this.interests[i] + '.';
+      //         } else {
+      //           string += this.interests[i] + ', ';
+      //         }
+      //       }
+      //     }
+      //     alert(string);
+      //   };
+      //   this.greeting = function() {
+      //     alert('Hi! I\'m ' + this.name.first + '.');
+      //   };
+      // }
+      // //create an obj instance by adding the code
+      // const person1 = new Person('Chimez', 'Stone', 27, 'other', ['music', 'swimming', 'biking']);
+
+
+
+    //The constructor property
+
+    //Every constructor function has a prototype property whose value is an object containing a constructor property.
+    //enter person1.constructor in browser console
+    //put () to the 'constructor' ppty and add any parameters in it to create another instance obj
+    // const person3 = new person1.constructor('Karen', 'Stephenson', 26, 'female', ['playing drums', 'mountain climbing']);
+    //the 'constructor' ppty is also used to return the name of the constr fn from which an instance obj is created
+    //  person1.constructor.name *Person
+    //or use 'instanceof' operator
+
+
+    //Modifying Prototypes
+    //adding smthn to our Person() constructor's prototype
+
+    // Person.prototype.farewell = function() {
+    //   alert(this.name.first + ' has left the building. Bye for now!');
+    // };
+    // person1.farewell();
+
+    </script>
+</html> -->
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Object-oriented JavaScript inheritance</title>
+  </head>
+
+  <body>
+    <div>
+      <label for="jscode">Enter code:</label>
+      <input type="text" id="jscode">
+      <button>Submit code</button>
+    </div>
+
+    <p></p>
+  </body>
+
+    <script>
+//       var input = document.querySelector('input');
+//       var btn = document.querySelector('button');
+//       var para = document.querySelector('p');
+//       btn.onclick = function() {
+//         var code = input.value;
+//         para.textContent = eval(code); //eval() is a js global fn that evaluates or executes an argument whether an xprssn or js statement
+//       }
+//       function Person(first, last, age, gender, interests) {
+//         this.name = {
+//           first,
+//           last
+//         };
+//         this.age = age;
+//         this.gender = gender;
+//         this.interests = interests;
+//       };
+//       Person.prototype.bio = function() {
+//         // First define a string, and make it equal to the part of
+//         // the bio that we know will always be the same.
+//         var string = this.name.first + ' ' + this.name.last + ' is ' + this.age + ' years old. ';
+//         // define a variable that will contain the pronoun part of
+//         // the second sentence
+//         var pronoun;
+//         // check what the value of gender is, and set pronoun
+//         // to an appropriate value in each case
+//         if(this.gender === 'male' || this.gender === 'Male' || this.gender === 'm' || this.gender === 'M') {
+//           pronoun = 'He likes ';
+//         } else if(this.gender === 'female' || this.gender === 'Female' || this.gender === 'f' || this.gender === 'F') {
+//           pronoun = 'She likes ';
+//         } else {
+//           pronoun = 'They like ';
+//         }
+//         // add the pronoun string on to the end of the main string
+//         string += pronoun;
+//         // use another conditional to structure the last part of the
+//         // second sentence depending on whether the number of interests
+//         // is 1, 2, or 3
+//         if(this.interests.length === 1) {
+//           string += this.interests[0] + '.';
+//         } else if(this.interests.length === 2) {
+//           string += this.interests[0] + ' and ' + this.interests[1] + '.';
+//         } else {
+//           // if there are more than 2 interests, we loop through them
+//           // all, adding each one to the main string followed by a comma,
+//           // except for the last one, which needs an and & a full stop
+//           for(var i = 0; i < this.interests.length; i++) {
+//             if(i === this.interests.length - 1) {
+//               string += 'and ' + this.interests[i] + '.';
+//             } else {
+//               string += this.interests[i] + ', ';
+//             }
+//           }
+//         }
+//         // finally, with the string built, we alert() it
+//         alert(string);
+//       };
+//       Person.prototype.greeting = function() {
+//         alert('Hi! I\'m ' + this.name.first + '.');
+//       };
+//       Person.prototype.farewell = function() {
+//         alert(this.name.first + ' has left the building. Bye for now!');
+//       }
+//       var person1 = new Person('Tammi', 'Smith', 17, 'female', ['music', 'skiing', 'kickboxing']);
+
+//       //Defining a Teacher() constructor fn
+// function Teacher(first, last, age, gender, interests, subject) {
+//   Person.call(this, first, last, age, gender, interests);
+//   //the call() fn allows u 2 call a fn dfnd elsewhere. d first parameter specif d vlu of this dat u want 2 use wen running d fn
+// //and the other parameters are those that should be passed to the function when it is invoked.
+// //We want the Teacher() constructor to take the same parameters as the Person() constructor it is inheriting from,
+// //so we specify them all as parameters in the call() invocation.
+//   this.subject = subject;
+// }
+// Teacher.prototype = Object.create(Person.prototype); //enables Teacher() inherits d mthds dfnd on Person()'s prototype
+
+// Object.defineProperty(Teacher.prototype, 'constructor', {
+//   value: Teacher,
+//   enumerable: false, // so that it does not appear in 'for in' loop
+//   writable: true
+// });
+
+// Teacher.prototype.greeting = function() {
+//   var prefix;
+//   if (this.gender === 'male' || this.gender === 'Male' || this.gender === 'm' || this.gender === 'M') {
+//     prefix = 'Mr. ';
+//   } else if (this.gender === 'female' || this.gender === 'Female' || this.gender === 'f' || this.gender === 'F') {
+//     prefix = 'Mrs. ';
+//   } else {
+//     prefix = 'Mx. ';
+//   }
+//   alert('Hello. My name is ' + prefix + ' ' + this.name.last + ', and I teach ' + this.subject + '.');
+// }
+
+// var teacher1 = new Teacher('Chimez', 'Stone', 27, 'M', ['swimming', 'cycling', 'reading', 'eating'], 'mathematics');
+
+// //Inheriting from a constructor with no parameters
+// // assuming we have this simple constructor fn:
+// function Brick() {
+//   this.width = 10;
+//   this.height = 20;
+// }
+
+// //we could inherit its ppty like this:
+// function BlueGlassBrick() {
+//   Brick.call(this);
+
+//   this.opacity = 0.5;
+//   this.color = 'blue';
+// }
+
+
+//Using ECMAScript 2015 Classes instead of prototypal inheritance
+//Writing Person() in class
+class Person {
+  constructor(first, last, age, gender, interests) {
+    this.name = {
+      first,
+      last
+    };
+    this.age = age;
+    this.gender = gender;
+    this.interests = interests;
+  }
+  greeting() {
+    console.log(`Hi! I'm ${this.name.first}`);
+  };
+  farewell() {
+    console.log(`${this.name.first} has left the building. Bye for now!`);
+  };
+}
+
+//we can now instantiate object instances using the 'new' operator
+let han = new Person('Han', 'Solo', 25, 'male', ['Smuggling']);
+
+let leia = new Person('Leia', 'Organa', 19, 'female', ['Government']);
+
+//inheritance with class syntax
+//we use the 'extend keyword' to tell js d class we want 2 base our clss on
+// class Teacher extends Person {
+//   constructor(first, last, age, gender, interests, subject, grade) {
+//     super(first, last, age, gender, interests); //this is d parent class constructor.
+//            //it initializes 'this' by calling the parent class Person()
+//            //passing it the necessary arguments of the Parent class constructor will
+//            //also initialize the parent class properties in our sub-class
+//     this.subject = subject;
+//     this.grade = grade;
+//   }
+// }
+//
+
+
+
+//Getters and Setters
+//There may be times when we want to change the values of an attribute in the classes
+//we create or we don't know what the final value of an attribute will be. Using the Teacher example,
+//we may not know what subject the teacher will teach before we create them, or their
+//subject may change between terms.We can handle such situations with getters and setters.
+//Getters and setters work in pairs. A getter returns the current value of the variable and
+//its corresponding setter changes the value of the variable to the one it defines.
+
+//modifying the Teacher()
+class Teacher extends Person {
+  constructor(first, last, age, gender, interests, subject, grade) {
+    super(first, last, age, gender, interests);
+    this._subject = subject;
+    this.grade = grade;
+  }
+  get subject() {
+  return this._subject; //'_' creates a separate vlu 2 store our named ppty
+  }
+  set subject(newSubject) {
+    this._subject = newSubject;
+  }
+}
+
+let snape = new Teacher('Severus', 'Snape', 58, 'male', ['Potions'], 'Dark arts', 5);
+
+console.log(snape.subject)
+snape.subject = "Balloon animals"
+console.log(snape.subject)
+
+    </script>
+</html>
